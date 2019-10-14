@@ -18,10 +18,10 @@ namespace ToDoList
             string startDate = "";
             do
             {
-                Console.WriteLine("Enter task's START date(dd.mm.yyyy: ");
+                Console.WriteLine("Enter task's START date(MM/dd/yyyy HH:mm): ");
                 startDate = Console.ReadLine();
 
-            } while (!DateTime.TryParseExact(startDate, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out start));
+            } while (!DateTime.TryParseExact(startDate, "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out start));
 
             //------------------------------------------------------------------------------------------------------------------------
 
@@ -31,14 +31,16 @@ namespace ToDoList
             DateTime end;
             if (endDate == "n")
             {
-                Console.WriteLine("Enter task's end date(dd.mm.yyyy: ");
+                Console.WriteLine("Enter task's end date(MM/dd/yyyy HH:mm): ");
                 endDate = Console.ReadLine();
                 end = DateTime.Now;
 
-                if (!DateTime.TryParseExact(endDate, "dd.mm.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out end))
+                if (!DateTime.TryParseExact(endDate, "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out end) ||
+                    start.Date > end.Date)
                 {
-                    Console.WriteLine("Date's format incorrect");
+                    Console.WriteLine("Date's format incorrect or end date is before start date (Time Machine is premium option ;) )");
                     endDate = "";
+                    return;
                 }
             }
             else
@@ -56,8 +58,8 @@ namespace ToDoList
             {
                 important = true;
             }
-            Program.taskList.Add(new TaskModel1(desc, start, end, allDay, important));
-            
+
+            Program.taskList.Add(new TaskModel1(desc, startDate, endDate, allDay, important));            
         }
     }
 }

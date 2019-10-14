@@ -8,18 +8,19 @@ namespace ToDoList
     public class TaskModel1
     {        
         public string Description { get; set; }
-        public DateTime DateStart { get; set; }
-        public DateTime DateEnd { get; set; }
+        public string DateStart { get; set; }
+        public string DateEnd { get; set; }
         public bool AllDayTask { get; set; }
         public bool ImportantTask { get; set; }
+        
 
-        public TaskModel1(string description, DateTime start, DateTime end, bool isAllDay, bool important)
+        public TaskModel1(string description, string start, string end, bool isAllDay, bool important)
         {
             Description = description;
             DateStart = start;
             DateEnd = end;
             AllDayTask = isAllDay;
-            ImportantTask = important;
+            ImportantTask = important;            
         }        
     }
 }   
