@@ -8,14 +8,14 @@ namespace ToDoList
     {
         public static void RemoveRecord()
         {
-            Program.ShowTasks();
+            Display.ShowTasks();
             Console.WriteLine("Which task do you want to delete? (type it's index number)");
             string indexInput = Console.ReadLine();
             int indexRemove = 0;
 
             if (Int32.TryParse(indexInput, out indexRemove))
             {
-                Program.taskList.RemoveAt(indexRemove);
+                TasksList.taskList.RemoveAt(indexRemove);
             }
             else
             {

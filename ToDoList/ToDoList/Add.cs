@@ -59,7 +59,7 @@ namespace ToDoList
                 important = true;
             }
 
-            Program.taskList.Add(new TaskModel1(desc, startDate, endDate, allDay, important));            
+            TasksList.taskList.Add(new TaskModel1(desc, startDate, endDate, allDay, important));            
         }
     }
 }
