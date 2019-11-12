@@ -15,7 +15,16 @@ namespace ToDoList
 
             foreach (var item in TasksList.taskList)
             {
-                Console.Write($"{taskList.IndexOf(item)}: {item.Description.PadRight(20)}; {item.DateStart.PadRight(20)}; {item.DateEnd.PadRight(20)}; {item.AllDayTask.ToString().PadRight(10)}; {item.ImportantTask.ToString().PadRight(10)}\n");
+                if (item.ImportantTask == true)
+                {
+                    string Important = $"{taskList.IndexOf(item)}: {item.Description.PadRight(20)}; {item.DateStart.PadRight(20)}; {item.DateEnd.PadRight(20)}; {item.AllDayTask.ToString().PadRight(10)}; {item.ImportantTask.ToString().PadRight(10)}";
+                    ConsoleEx.Write(Important);
+
+                }
+                else
+                {
+                    Console.Write($"{taskList.IndexOf(item)}: {item.Description.PadRight(20)}; {item.DateStart.PadRight(20)}; {item.DateEnd.PadRight(20)}; {item.AllDayTask.ToString().PadRight(10)}; {item.ImportantTask.ToString().PadRight(10)}\n");
+                }
             }
             Console.WriteLine();
         }
